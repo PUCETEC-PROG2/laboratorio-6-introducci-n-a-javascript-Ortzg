@@ -17,10 +17,16 @@ const PRECIO_BASE = 0.50;
 // - Al menos 2 adultos entre 18-64 años (sin descuento)
 
 const clientes = [
-    { nombre: "Pablo Pérez", edad: 15, tickets: 2 },     // Menor
-    { nombre: "María López", edad: 70, tickets: 1 },     // Mayor
+    { nombre: "Pablo Pérez", edad: 15, tickets: 2 },    // Menor
+    { nombre: "María López", edad: 70, tickets: 10 },    // Mayor
+
+    // Asegúrate de incluir: 1 menor más, 1 mayor más, y 2 adultos (18-64 años)
     // TODO: Agrega 4 clientes más siguiendo esta estructura
     // Asegúrate de incluir: 1 menor más, 1 mayor más, y 2 adultos (18-64 años)
+    { nombre: "Jose Perez", edad: 79, tickets: 14 },
+    { nombre: "Maria Gonzales", edad: 14, tickets: 10 },
+    { nombre: "Carlos Ortiz", edad: 19, tickets: 10 },
+    { nombre: "Doey Simba", edad: 20, tickets: 10 },
 ];
 
 
@@ -34,27 +40,34 @@ console.log("========================================\n");
 
 // TODO: Crea un bucle for que recorra el array 'clientes'
 for (let i = 0; i < clientes.length; i++) {
-    
-    // TODO: Paso 1 - Obtén los datos del cliente actual
+
+
+    //Paso 1 - Obtén los datos del cliente actual
     let cliente = clientes[i];
     let nombre = cliente.nombre;
     let edad = cliente.edad;
     let cantidadTickets = cliente.tickets;
-    
-    // TODO: Paso 2 - Calcula el precio sin descuento
+
+    //Paso 2 - Calcula el precio sin descuento
     // Multiplica PRECIO_BASE por cantidadTickets
-    let precioSinDescuento = 0; // Reemplaza 0 con el cálculo correcto
-    
-    // TODO: Paso 3 - Calcula el descuento según la edad
+    let precioSinDescuento = PRECIO_BASE * cantidadTickets; // Reemplaza 0 con el cálculo correcto
+
+    //Paso 3 - Calcula el descuento según la edad
     let descuento = 0;
-    // Si edad < 18, descuento = 0.50 (50%)
-    // Si edad >= 65, descuento = 0.30 (30%)
-    // Si no, descuento = 0 (sin descuento)
-    
-    // TODO: Paso 4 - Calcula el precio con descuento
+
+    if (edad < 18) {
+        descuento = 0.50;
+    }
+
+    else if (edad >= 65) {
+        descuento = 0.30;
+    }
+
+
+    //Paso 4 - Calcula el precio con descuento
     // Resta al precioSinDescuento el monto del descuento
-    let precioConDescuento = 0; // Reemplaza 0 con el cálculo correcto
-    
+    let precioConDescuento = precioSinDescuento - (precioSinDescuento * descuento); // Reemplaza 0 con el cálculo correcto
+
     // TODO: Paso 5 - Muestra el reporte del cliente
     console.log("Cliente: " + nombre);
     console.log("Edad: " + edad + " años");
